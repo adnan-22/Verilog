@@ -1,0 +1,25 @@
+module fourbitadder(A,B,S);
+input [3:0]A;
+input [3:0]B;
+output [4:0]S;
+wire c0,c1,c2,c3,c4,c5,c6,c7,c8,ps1,ps2,ps3;
+Half_Adder f1(A[0],B[0],S[0],c0);
+Half_Adder f2(A[1],B[1],ps1,c1);
+Half_Adder f3(ps1,c0,S[1],c2);
+assign c3=c1|c2;
+Half_Adder f4(A[2],B[2],ps2,c4);
+Half_Adder f5(ps2,c3,S[2],c5);
+assign c6=c4|c5;
+Half_Adder f6(A[3],B[3],ps3,c7);
+Half_Adder f7(ps3,c6,S[3],c8);
+assign S[4]=c7|c8;
+endmodule
+module Half_Adder(a,b,s,c);
+input a,b;
+output reg s,c;
+always@(a or b)
+begin
+s=a^b;
+c=a&b;
+end
+endmodule
