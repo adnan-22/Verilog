@@ -1,0 +1,20 @@
+module mux4to1(s,I,y);
+input [1:0]s;
+input [3:0]I;
+output y;
+wire y2,y1;
+mux2to1 f1(s[1],I[0],I[1],y1);
+mux2to1 f2(s[1],I[2],I[3],y2);
+mux2to1 f3(s[0],y1,y2,y);
+endmodule
+module mux2to1(S,I0,I1,F);
+input S,I0,I1;
+output reg F;
+always@ (S)
+begin
+if(S==0)
+F=I0;
+else
+F=I1;
+end
+endmodule
