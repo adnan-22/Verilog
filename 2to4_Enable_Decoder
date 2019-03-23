@@ -1,0 +1,16 @@
+odule dec2to4(E,W,Y);
+input E;
+input [1:0]W;
+output reg [3:0]Y;
+integer i;
+always@ (E,W)
+begin
+for(i=0;i<=3;i=i+1)
+begin
+if((W==i) && (E==1))
+Y[i]=1;
+else
+Y[i]=0;
+end
+end
+endmodule
