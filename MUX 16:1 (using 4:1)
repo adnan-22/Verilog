@@ -1,0 +1,26 @@
+module m16to1(I,S,F);
+input [15:0]I;
+input [3:0]S;
+output F;
+wire [3:0]Y;
+mux4to1 f1(I[3:0],  S[1:0],Y[0]);
+mux4to1 f2(I[7:4],  S[1:0],Y[1]);
+mux4to1 f3(I[11:8], S[1:0],Y[2]);
+mux4to1 f4(I[15:12],S[1:0],Y[3]);
+mux4to1 f5(Y[3:0],  S[3:2],F);
+endmodule
+
+module mux4to1(i,s,y);
+input [1:0]s;
+input [3:0]i;
+output reg y;
+always@(s)
+begin
+case (s)
+2'b00:y=i[0];
+2'b01:y=i[1];
+2'b10:y=i[2];
+2'b11:y=i[3];
+endcase
+end
+endmodule
