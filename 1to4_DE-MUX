@@ -1,0 +1,16 @@
+module dm(I,S,y);
+input I;
+input [1:0]S;
+output reg [3:0]y;
+integer i;
+always@(S)
+begin
+for(i=0;i<=3;i=i+1)
+begin
+if(i==S)
+y[i]=I;
+else
+y[i]=0;
+end
+end
+endmodule
