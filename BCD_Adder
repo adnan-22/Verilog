@@ -1,0 +1,14 @@
+module BCD_Adder(A,B,Z,S);
+input [3:0]A;
+input [3:0]B;
+output reg [4:0]Z;
+output reg [4:0]S;
+always@ (A,B)
+begin
+Z=A+B;
+if(Z>9)
+S=Z+6;
+else
+S=Z;
+end
+endmodule
