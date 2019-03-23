@@ -1,0 +1,12 @@
+module q_1_page103(T,clk,Q);
+input T,clk;
+output reg Q;
+wire A1,A2,O;
+assign A1=(~Q)&T;
+assign A2=Q&(~T);
+assign O=A1|A2;
+always@ (posedge clk)
+begin
+Q<=O;
+end
+endmodule
